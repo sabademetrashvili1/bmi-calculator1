@@ -1,0 +1,49 @@
+from tkinter import *
+
+root = Tk()
+
+root.title("BMI Calculator")
+
+name = Label(root, text="BMI Calculator", width=35)
+name.grid(row=0, column=1, columnspan=3)
+
+
+height = Label(root, text="Heigth:")
+height.grid(row=1, column=0)
+height_entry = Entry(root, width=40, borderwidth=5)
+height_entry.grid(row=1, column=1, columnspan=2)
+
+weigth = Label(root, text="Weigth:")
+weigth_entry = Entry(root, width=40, borderwidth=5)
+weigth.grid(row=2, column=0)
+weigth_entry.grid(row=2, column=1, columnspan=2)
+
+def bmi():
+    s = float(height_entry.get())
+    b = float(weigth_entry.get())
+    d = b / (s * s)
+    if d < 18.5:
+        e = " Underweight"
+        my_label = Label(root, text="Your BMI is " + str(float(round(d, 1))) + e)
+        my_label.grid(row=4, column=0, columnspan=2)
+    elif d >= 18.5 and d < 24.9:
+        e = " Normal weight"
+        my_label = Label(root, text="Your BMI is " + str(float(round(d, 1))) + e)
+        my_label.grid(row=4, column=0, columnspan=2)
+    elif d > 24.9 and d < 29.9:
+        e = " Over weight"
+        my_label = Label(root, text="Your BMI is " + str(float(round(d, 1))) + e)
+        my_label.grid(row=4, column=0, columnspan=2)
+    else:
+        e = " Obesity"
+        my_label = Label(root, text="Your BMI is " + str(float(round(d, 1))) + e)
+        my_label.grid(row=4, column=0, columnspan=2)
+
+button_calculate = Button(root, text="Calculate", padx=20, pady=10, borderwidth=5, command=bmi)
+button_exit = Button(root, text="Exit", padx=20, pady=10, borderwidth=5, command=root.quit)
+button_calculate.grid(row=3, column=0)
+button_exit.grid(row=3, column=1)
+
+
+
+root.mainloop()
