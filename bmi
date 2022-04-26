@@ -24,8 +24,22 @@ def calculate():
     b = entry1.get()
 
     calculate = float(b) / (float(s) ** 2)
-    label = Label(root, text="Your BMI is " + str(round(calculate, 2)))
-    label.grid(row=5, column=0)
+    if calculate < 18.5:
+        label = Label(root, text="Your BMI is " + str(round(calculate, 2)) + "\nUnderweight")
+        label.grid(row=5, column=0)
+    elif calculate >= 18.5 and calculate < 25:
+        label = Label(root, text="Your BMI is " + str(round(calculate, 2)) + "\nNormal weight")
+        label.grid(row=5, column=0)
+    elif calculate >= 25 and calculate < 30:
+        label = Label(root, text="Your BMI is " + str(round(calculate, 2)) + "\nOverweight")
+        label.grid(row=5, column=0)
+    elif calculate >= 30:
+        label = Label(root, text="Your BMI is " + str(round(calculate, 2)) + "\nObesity")
+        label.grid(row=5, column=0)
+    else:
+        label = Label(root, text="Error input")
+        label.grid(row=5, column=0)
+
 
 button_Clear = Button(root, text="Clear", padx=16, command=clear)
 button_Exit = Button(root, text="Exit", padx=20, command=root.quit)
